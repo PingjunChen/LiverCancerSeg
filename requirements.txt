@@ -1,0 +1,6 @@
+openslide-python==1.1.1
+opencv-python==3.4.4.19
+pyslide==0.3.6
+tissueloc==2.0.1
+pycontour==1.3.7
+pydaily==0.3.3
