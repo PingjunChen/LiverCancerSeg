@@ -9,7 +9,7 @@ $ pip install -r requirements.txt
 
 ## Preprocesssing:
 ### 1. Download slides and unzip
-Download all 50 zipped slides and put them inside `./data/SourceData`, unzip them by running
+Download all 50 zipped slides and two csv files, put them inside `./data/SourceData`, unzip them by running
 ```
 $ cd preprocess
 $ python unzip_slides.py

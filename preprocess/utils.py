@@ -41,7 +41,7 @@ def check_slide_level(slide_list):
     print("There are {} slides not satisfying properties.".format(fail_num))
 
 
-if __name__ == "__main__":
-    slides_dir = os.path.join("../data", "LiverImages")
-    slide_list = get_slide_list(slides_dir)
-    check_slide_level(slide_list)
+# if __name__ == "__main__":
+#     slides_dir = os.path.join("../data", "LiverImages")
+#     slide_list = get_slide_list(slides_dir)
+#     check_slide_level(slide_list)
