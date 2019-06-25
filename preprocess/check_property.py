@@ -13,7 +13,6 @@ def get_slide_list(slides_dir):
     slide_list.extend(svs_file_list)
     SVS_file_list = filesystem.find_ext_files(slides_dir, "SVS")
     slide_list.extend(SVS_file_list)
-    # print("There are {} slides files.".format(len(slide_list)))
 
     return slide_list
 
@@ -41,7 +40,7 @@ def check_slide_level(slide_list):
     print("There are {} slides not satisfying properties.".format(fail_num))
 
 
-# if __name__ == "__main__":
-#     slides_dir = os.path.join("../data", "LiverImages")
-#     slide_list = get_slide_list(slides_dir)
-#     check_slide_level(slide_list)
+if __name__ == "__main__":
+    slides_dir = os.path.join("../data", "LiverImages")
+    slide_list = get_slide_list(slides_dir)
+    check_slide_level(slide_list)
