@@ -31,7 +31,7 @@ def extract_csv_burden(csv_path, case_num):
     slide_burden = df['pixel ratio'].values.tolist()[:case_num]
     burden_dict = {}
     for id, burden in zip(slide_ids, slide_burden):
-        burden_dict[str(id).zfill(4)] = burden
+        burden_dict[str(int(id)).zfill(4)] = burden
 
     return burden_dict
 
@@ -54,6 +54,7 @@ if __name__ == "__main__":
     # load calcualted burden
     cal_burden_path = os.path.join(source_slides_dir, "calculated_tumor_burden.json")
     cal_burden_dict = format.json_to_dict(cal_burden_path)
+
     # compare gt & cal
     for ind, key in enumerate(gt_burden_dict):
         if key not in cal_burden_dict:
