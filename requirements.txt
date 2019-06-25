@@ -1,5 +1,7 @@
 openslide-python==1.1.1
+pillow==5.2.0
 opencv-python==3.4.4.19
+scikit-image==0.14.2
 tissueloc==2.0.1
 pyslide==0.4.0
 pycontour==1.4.0
