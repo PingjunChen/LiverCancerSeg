@@ -34,9 +34,15 @@ $ cd ../burden
 $ python validate_burden.py
 ```
 
-
-
 ## Patch-based Slide Segmentation:
 ### 1. Patch sample generation
-### 2. Patch segmentation model training
+#### 1.1 viable tumor patch splitting
+#### 1.2 whole tumor patch splitting
+
+### 2. Segmentation model training
+#### 2.1 Model selection
+#### 2.2 Optimizer
+#### 2.3 Loss function
+#### 2.4 Patch Normalization
+
 ### 3. Slide tumor prediction
