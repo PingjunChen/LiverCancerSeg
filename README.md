@@ -43,6 +43,6 @@ $ python validate_burden.py
 #### 2.1 Model selection
 #### 2.2 Optimizer
 #### 2.3 Loss function
-#### 2.4 Patch Normalization
+#### 2.4 Patch normalization
 
 ### 3. Slide tumor prediction
