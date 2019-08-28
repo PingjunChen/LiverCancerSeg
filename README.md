@@ -46,3 +46,6 @@ $ python validate_burden.py
 #### 2.4 Patch normalization
 
 ### 3. Slide tumor prediction
+
+## Acknowledgement
+- 
