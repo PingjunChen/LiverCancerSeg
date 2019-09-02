@@ -18,7 +18,7 @@ from pycontour.cv2_transform import cv_cnt_to_np_arr
 from pycontour.poly_transform import np_arr_to_poly, poly_to_np_arr
 
 
-def gen_samples(slides_dir, slide_list, dset, patch_level, patch_size, tumor_type, overlap_mode):
+def gen_samples(slides_dir, patch_level, patch_size, tumor_type, slide_list, dset, overlap_mode):
     # prepare saving directory
     patch_path = os.path.join(os.path.dirname(slides_dir), "Patches", tumor_type)
     patch_img_dir = os.path.join(patch_path, dset, "imgs")
@@ -58,7 +58,7 @@ def gen_samples(slides_dir, slide_list, dset, patch_level, patch_size, tumor_typ
             coors_arr = contour.contour_patch_splitting_half_overlap(tissue_arr, level_h, level_w, patch_size, inside_ratio=0.80)
         elif overlap_mode == "self_overlap":
             coors_arr = contour.contour_patch_splitting_self_overlap(tissue_arr, patch_size, inside_ratio=0.80)
-        elif:
+        else:
             raise NotImplementedError("unknown overlapping mode")
 
         wsi_img = wsi_head.read_region((0, 0), patch_level, wsi_head.level_dimensions[patch_level])
@@ -105,9 +105,12 @@ if __name__ == "__main__":
     train_slide_list, val_slide_list = train_test_split(slide_list, test_size=0.20, random_state=1234)
     # generate patches for segmentation model training
     slides_dir = os.path.join("../data", "LiverImages")
-    patch_level, patch_size,  = 2, 512
-    tumor_type = "viable"  # "whole"
-    print("Generating {} tumor patches.".format(tumor_type))
-    patch_modes = [("val", "half_overlap"), ("train", "half_overlap"), ("val", "self_overlap"), ("train", "self_overlap")]
-    for mode in patch_modes:
-        gen_samples(slides_dir, val_slide_list, mode[0], patch_level, patch_size, tumor_type, overlap_mode=mode[1])
+    patch_level, patch_size = 2, 512
+    # tumor_type = "viable"
+    tumor_types = ["viable", "whole"]
+    for cur_type in tumor_types:
+        print("Generating {} tumor patches.".format(cur_type))
+        patch_modes = [(val_slide_list, "val", "half_overlap"), (val_slide_list, "val", "self_overlap"),
+                       (train_slide_list, "train", "half_overlap"), (train_slide_list, "train", "self_overlap")]
+        for mode in patch_modes:
+            gen_samples(slides_dir, patch_level, patch_size, cur_type, mode[0], mode[1], overlap_mode=mode[2])
