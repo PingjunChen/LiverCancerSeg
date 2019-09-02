@@ -52,7 +52,7 @@ $ python gen_patches.py
 #### 2.1 Model selection
 We explore UNet and PSPNet on liver patch segmentation. Experimental results show that PSPNet achieves superior performance.
 #### 2.2 Optimizer
-We compare SGD with initial learning rate 1.0e-2 and Adam with initial learning rate 1.0e-3. On both PSPNet and UNet, SGD presents superior performance. We train the segmentation model for 100 epochs and decay the learning rate by 0.6 every eight epochs.
+We compare SGD with initial learning rate 1.0e-2 and Adam with initial learning rate 1.0e-3. On both PSPNet and UNet, SGD presents superior performance. We train the segmentation model for 50 epochs and decay the learning rate with epoch-wise stepping until 0.0.
 #### 2.3 Loss function
 Binary cross-entropy (BCE) and dice loss are combined as the overall loss. BCE-0.1 achieves the most promising results.
 #### 2.4 Patch normalization
@@ -72,7 +72,7 @@ The slide-level segmentation is also conducted in a patch-wise manner. To be spe
 
 Here the main issue is how to split the whole slide image. To make the slide-level segmentation to be more robust, we adopt a stride-wise patch splitting method and set the stride to be small (64 used). When the stride is small, each pixel would lie in more patches and thus would be predicted more times. As we would average the predictions to get the final prediction, each pixel's segmentation prediction would be more robust if it is predicted more times in multiple different contexts. However, the time cost would linearly increase with the number of patches. In the current application, we take the segmentation accuracy as the priority.
 
-To run
+Before predicting on test slides, we copy the best-performed model and paste it to `BestModel` folder for both `viable` and `whole`, then run
 ```
 $ cd seg
 $ python pred_test_slide.py
@@ -83,7 +83,6 @@ After both `viable` and `whole` tumor regions are predicted, we calculate the tu
 $ cd burden
 $ python pred_burden.py
 ```
-
 
 ## Acknowledgements
 - [shahabty/PSPNet-Pytorch](https://github.com/shahabty/PSPNet-Pytorch)
