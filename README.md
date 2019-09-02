@@ -64,6 +64,9 @@ $ cd seg
 $ python train_seg.py
 ```
 
+The Caffe pretrained PSPNet needs to be downloaded from [Here](https://drive.google.com/open?id=0BzaU285cX7TCT1M3TmNfNjlUeEU) and put it in `seg/segnet/pspnet/`.
+
+
 ### 3. Slide tumor prediction
 The slide-level segmentation is also conducted in a patch-wise manner. To be specific, we first split whole slide images into patches, and then we predict each patch. At last, we merge all patches' predictions to generate the final tumor segmentation result.
 
@@ -80,3 +83,9 @@ After both `viable` and `whole` tumor regions are predicted, we calculate the tu
 $ cd burden
 $ python pred_burden.py
 ```
+
+
+## Acknowledgements
+- [shahabty/PSPNet-Pytorch](https://github.com/shahabty/PSPNet-Pytorch)
+- [hszhao/PSPNet](https://github.com/hszhao/PSPNet)
+- [usuyama/pytorch-unet](https://github.com/usuyama/pytorch-unet)
