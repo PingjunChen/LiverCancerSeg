@@ -42,7 +42,7 @@ Current we use two splitting manners, half-overlap and self-overlap. ``half-over
 
 **whole tumor patch splitting:** We combine half-overlap with self-overlap with no control on mask foreground ratio. Compared with the viable tumor, whole tumor patch generation can obtain patches, and the ratio of background would be higher, thus avoiding false-positive in whole tumor prediction.
 
-Use the following commands, and generate patches for `viable` and `whole` by setting `tumor_type`.
+Use the following commands to generate patches for `viable` and `whole` by setting the parameter `tumor_type`.
 ```
 $ cd patches
 $ python gen_patches.py
