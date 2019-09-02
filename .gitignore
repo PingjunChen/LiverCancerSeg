@@ -3,6 +3,8 @@ data/
 
 # Files
 data
+.remote-sync.json
+
 
 
 # Byte-compiled / optimized / DLL files
