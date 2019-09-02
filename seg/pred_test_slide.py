@@ -61,14 +61,13 @@ def test_slide_seg(args):
         model = UNet(n_channels=args.in_channels, n_classes=args.class_num)
     elif args.model_name == "PSP":
         model = pspnet.PSPNet(n_classes=19, input_size=(512, 512))
-        model.load_pretrained_model(model_path="./segnet/pspnet/pspnet101_cityscapes.caffemodel")
+        # model.load_pretrained_model(model_path="./segnet/pspnet/pspnet101_cityscapes.caffemodel")
         model.classification = nn.Conv2d(512, args.class_num, kernel_size=1)
     else:
         raise AssertionError("Unknow modle: {}".format(args.model_name))
     model_path = os.path.join(args.model_dir, args.tumor_type, args.split, args.best_model)
     model = nn.DataParallel(model)
     model.load_state_dict(torch.load(model_path))
-
     model.cuda()
     model.eval()
 

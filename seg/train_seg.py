@@ -28,9 +28,8 @@ def set_args():
     parser.add_argument("--class_num",       type=int,   default=1)
     parser.add_argument("--batch_size",      type=int,   default=8,        help="batch size")
     parser.add_argument("--in_channels",     type=int,   default=3,        help="input channel number")
-    parser.add_argument("--maxepoch",        type=int,   default=100,      help="number of epochs to train")
+    parser.add_argument("--maxepoch",        type=int,   default=50,       help="number of epochs to train")
     parser.add_argument("--init_lr",         type=float, default=1.0e-2,   help="init learning rate for optimization")
-    # parser.add_argument("--decay_epoch",     type=int,   default=12,       help="lr start to decay linearly from decay_epoch")
     parser.add_argument("--bce_weight",      type=float, default=0.1,      help="weight of bce loss")
     parser.add_argument("--data_dir",        type=str,   default="../data/Patches")
     parser.add_argument("--model_dir",       type=str,   default="../data/Models")
@@ -40,7 +39,7 @@ def set_args():
     parser.add_argument("--optim_name",      type=str,   default="SGD")
     parser.add_argument("--gpu",             type=str,   default="2, 3",   help="training gpu")
     parser.add_argument("--seed",            type=int,   default=1234,     help="training seed")
-    parser.add_argument("--session",         type=str,   default="LR01",   help="training session")
+    parser.add_argument("--session",         type=str,   default="Step01", help="training session")
 
     args = parser.parse_args()
     return args
