@@ -33,7 +33,7 @@ def set_args():
     parser.add_argument("--bce_weight",      type=float, default=0.1,      help="weight of bce loss")
     parser.add_argument("--data_dir",        type=str,   default="../data/Patches")
     parser.add_argument("--model_dir",       type=str,   default="../data/Models")
-    parser.add_argument("--tumor_type",      type=str,   default="viable")
+    parser.add_argument("--tumor_type",      type=str,   default="whole")
     parser.add_argument("--normalize",       type=bool,  default=False)
     parser.add_argument("--model_name",      type=str,   default="PSP")
     parser.add_argument("--optim_name",      type=str,   default="SGD")
