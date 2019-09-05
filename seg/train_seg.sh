@@ -1,4 +1,4 @@
 #! /bin/bash
 
-sleep 1h
+# sleep 3h
 python train_seg.py

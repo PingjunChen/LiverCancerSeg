@@ -26,9 +26,6 @@ from loss import calc_loss
 from dataload import PatchDataset
 
 
-# Good models based on validation: 24/13
-# Less goood: 21/22
-
 def set_args():
     parser = argparse.ArgumentParser(description = 'Liver Tumor Slide Segmentation')
     parser.add_argument("--class_num",       type=int,   default=1)
@@ -40,10 +37,10 @@ def set_args():
     parser.add_argument("--model_name",      type=str,   default="PSP")
     parser.add_argument("--gpu",             type=str,   default="2, 3")
     parser.add_argument("--split",           type=str,   default="BestModel")
-    # parser.add_argument("--tumor_type",      type=str,   default="viable")
-    # parser.add_argument("--best_model",      type=str,   default="PSP-001-0.722.pth")
-    parser.add_argument("--tumor_type",      type=str,   default="whole")
-    parser.add_argument("--best_model",      type=str,   default="PSP-007-0.636.pth")
+    parser.add_argument("--tumor_type",      type=str,   default="viable")
+    parser.add_argument("--best_model",      type=str,   default="PSP-047-0.778.pth")
+    # parser.add_argument("--tumor_type",      type=str,   default="whole")
+    # parser.add_argument("--best_model",      type=str,   default="PSP-049-0.682.pth")
     parser.add_argument("--model_dir",       type=str,   default="../data/Models")
     parser.add_argument("--slides_dir",      type=str,   default="../data/TestSlides")
     parser.add_argument("--result_dir",      type=str,   default="../data/TestResults")
@@ -61,7 +58,6 @@ def test_slide_seg(args):
         model = UNet(n_channels=args.in_channels, n_classes=args.class_num)
     elif args.model_name == "PSP":
         model = pspnet.PSPNet(n_classes=19, input_size=(512, 512))
-        # model.load_pretrained_model(model_path="./segnet/pspnet/pspnet101_cityscapes.caffemodel")
         model.classification = nn.Conv2d(512, args.class_num, kernel_size=1)
     else:
         raise AssertionError("Unknow modle: {}".format(args.model_name))
@@ -79,7 +75,6 @@ def test_slide_seg(args):
         org_result_dir = os.path.join(result_dir, "Level0")
         filesystem.overwrite_dir(org_result_dir)
 
-    ttl_pred_dice = 0.0
     for num, cur_slide in enumerate(slide_names):
         print("--{:02d}/{:02d} Slide:{}".format(num+1, len(slide_names), cur_slide))
         metrics = defaultdict(float)

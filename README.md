@@ -52,7 +52,7 @@ $ python gen_patches.py
 #### 2.1 Model selection
 We explore UNet and PSPNet on liver patch segmentation. Experimental results show that PSPNet achieves superior performance.
 #### 2.2 Optimizer
-We compare SGD with initial learning rate 1.0e-2 and Adam with initial learning rate 1.0e-3. On both PSPNet and UNet, SGD presents superior performance. We train the segmentation model for 50 epochs and decay the learning rate with epoch-wise stepping until 0.0.
+We compare SGD with initial learning rate 1.0e-2 and Adam with initial learning rate 1.0e-3. On both PSPNet and UNet, SGD presents superior performance. We train the segmentation model for 50 epochs and decay the learning rate with epoch-wise down-stepping until 0.0.
 #### 2.3 Loss function
 Binary cross-entropy (BCE) and dice loss are combined as the overall loss. BCE-0.1 achieves the most promising results.
 #### 2.4 Patch normalization
