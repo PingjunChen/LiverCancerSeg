@@ -72,13 +72,17 @@ The slide-level segmentation is also conducted in a patch-wise manner. To be spe
 
 Here the main issue is how to split the whole slide image. To make the slide-level segmentation to be more robust, we adopt a stride-wise patch splitting method and set the stride to be small (64 used). When the stride is small, each pixel would lie in more patches and thus would be predicted more times. As we would average the predictions to get the final prediction, each pixel's segmentation prediction would be more robust if it is predicted more times in multiple different contexts. However, the time cost would linearly increase with the number of patches. In the current application, we take the segmentation accuracy as the priority.
 
+<p>
+  <img style="float: right;" width="300" height="280" src="./viable_whole_burden.jpg">
+</p>
+
 Before predicting on test slides, we copy the best-performed model and paste it to `BestModel` folder for both `viable` and `whole`, then run
 ```
 $ cd seg
 $ python pred_test_slide.py
 ```
 
-After both `viable` and `whole` tumor regions are predicted, we calculate the tumor burden with
+After `viable` and `whole` tumor regions are predicted, we calculate the tumor burden with
 ```
 $ cd burden
 $ python pred_burden.py
