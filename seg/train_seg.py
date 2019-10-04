@@ -33,13 +33,13 @@ def set_args():
     parser.add_argument("--bce_weight",      type=float, default=0.1,      help="weight of bce loss")
     parser.add_argument("--data_dir",        type=str,   default="../data/Patches")
     parser.add_argument("--model_dir",       type=str,   default="../data/Models")
-    parser.add_argument("--tumor_type",      type=str,   default="viable")
+    parser.add_argument("--tumor_type",      type=str,   default="whole")
     parser.add_argument("--normalize",       type=bool,  default=False)
     parser.add_argument("--model_name",      type=str,   default="PSP")
     parser.add_argument("--optim_name",      type=str,   default="SGD")
-    parser.add_argument("--gpu",             type=str,   default="2, 3",   help="training gpu")
+    parser.add_argument("--gpu",             type=str,   default="3,5,6,7",   help="training gpu")
     parser.add_argument("--seed",            type=int,   default=1234,     help="training seed")
-    parser.add_argument("--session",         type=str,   default="Step01", help="training session")
+    parser.add_argument("--session",         type=str,   default="Step02", help="training session")
 
     args = parser.parse_args()
     return args
