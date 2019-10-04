@@ -103,6 +103,7 @@ if __name__ == "__main__":
     mask_dir = os.path.join("../data", "Visualization", "TissueLoc")
     slide_list = [os.path.splitext(ele)[0] for ele in os.listdir(mask_dir) if "png" in ele]
     train_slide_list, val_slide_list = train_test_split(slide_list, test_size=0.20, random_state=1234)
+    
     # generate patches for segmentation model training
     slides_dir = os.path.join("../data", "LiverImages")
     patch_level, patch_size = 2, 512
