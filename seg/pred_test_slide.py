@@ -38,9 +38,10 @@ def set_args():
     parser.add_argument("--gpu",             type=str,   default="3,5,6,7")
     parser.add_argument("--split",           type=str,   default="BestModel")
     parser.add_argument("--tumor_type",      type=str,   default="viable")
-    parser.add_argument("--best_model",      type=str,   default="PSP-027-0.727.pth")
+    parser.add_argument("--best_model",      type=str,   default="PSP-050-0.755.pth")
     # parser.add_argument("--tumor_type",      type=str,   default="whole")
     # parser.add_argument("--best_model",      type=str,   default="PSP-049-0.682.pth")
+
     parser.add_argument("--model_dir",       type=str,   default="../data/Models")
     parser.add_argument("--slides_dir",      type=str,   default="../data/TestSlides")
     parser.add_argument("--result_dir",      type=str,   default="../data/TestResults")
