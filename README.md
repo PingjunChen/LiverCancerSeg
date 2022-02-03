@@ -1,4 +1,4 @@
-# [Liver Tumor Segmentation - PAIP2019: Liver Cancer Segmentation](https://paip2019.grand-challenge.org/)
+# [PAIP2019: Liver Cancer Segmentation](https://paip2019.grand-challenge.org/)
 
 To use the code, the user needs to pre-install a few packages.
 ```
